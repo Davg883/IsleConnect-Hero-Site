@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cyan-glow: #00E5FF;
+  --color-gold-accent: #D4AF37;
+  --color-dark-bg: #111111;
+  --color-dark-card: #1B1B1B;
+  --color-dark-card-hover: #222222;
+  --color-dark-border: #2B2B2B;
+  --color-light-text: #F5F2EB;
+  
+  --font-sans: "Outfit", sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --font-mono: "Space Mono", monospace;
+  
+  --animate-scanline: scanline 8s linear infinite;
+  --animate-pulse-glow: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-fade-in: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.3;
+    filter: drop-shadow(0 0 2px rgba(0, 229, 255, 0.2));
+  }
+  50% {
+    opacity: 0.8;
+    filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.6));
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom Scrollbar for premium dark aesthetic */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #111111;
+}
+::-webkit-scrollbar-thumb {
+  background: #2B2B2B;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D4AF37;
+}
+
+/* Global resets and styling */
+body {
+  background-color: #111111;
+  color: #F5F2EB;
+  overflow-x: hidden;
+  font-family: "Outfit", sans-serif;
+}
+
+.glow-hover:hover {
+  box-shadow: 0 0 25px rgba(0, 229, 255, 0.15);
+  border-color: #00E5FF;
+}
+
+.gold-glow-hover:hover {
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.15);
+  border-color: #D4AF37;
+}
+
+/* CRT monitor effect styling for a subtle retro-tech feel */
+.crt-effect {
+  position: relative;
+  overflow: hidden;
+}
+.crt-effect::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 10;
+  background-size: 100% 3px, 6px 100%;
+  pointer-events: none;
+}
