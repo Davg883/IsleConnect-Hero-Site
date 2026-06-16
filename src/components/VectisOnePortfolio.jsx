@@ -31,6 +31,9 @@ export default function VectisOnePortfolio() {
   const [galleryImages, setGalleryImages] = useState([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+  // Portfolio filter mode state
+  const [filterMode, setFilterMode] = useState('all'); // 'all', 'hospitality', 'enterprise'
+
   // Video definitions
   const videos = {
     cinema: {
@@ -243,6 +246,48 @@ export default function VectisOnePortfolio() {
           </div>
         </header>
 
+        {/* PORTFOLIO MODE FILTER */}
+        <div className="flex flex-wrap justify-center md:justify-start gap-3 mb-8 font-mono text-xs animate-fade-in relative z-25">
+          <button
+            onClick={() => {
+              setFilterMode('all');
+            }}
+            className={`px-4 py-2 border rounded cursor-pointer transition-all duration-300 ${
+              filterMode === 'all'
+                ? 'bg-[#00E5FF] text-black border-[#00E5FF] font-bold shadow-[0_0_15px_rgba(0,229,255,0.25)]'
+                : 'text-gray-400 border-[#2B2B2B] hover:text-white hover:border-[#D4AF37]'
+            }`}
+          >
+            [ SHOW_ALL_SYSTEMS ]
+          </button>
+          <button
+            onClick={() => {
+              setFilterMode('hospitality');
+              setActiveTab('hospitality');
+            }}
+            className={`px-4 py-2 border rounded cursor-pointer transition-all duration-300 ${
+              filterMode === 'hospitality'
+                ? 'bg-[#D4AF37] text-black border-[#D4AF37] font-bold shadow-[0_0_15px_rgba(212,175,55,0.25)]'
+                : 'text-gray-400 border-[#2B2B2B] hover:text-white hover:border-[#D4AF37]'
+            }`}
+          >
+            [ B2B_HOSPITALITY_PITCH ]
+          </button>
+          <button
+            onClick={() => {
+              setFilterMode('enterprise');
+              setActiveTab('cinema');
+            }}
+            className={`px-4 py-2 border rounded cursor-pointer transition-all duration-300 ${
+              filterMode === 'enterprise'
+                ? 'bg-[#00E5FF] text-black border-[#00E5FF] font-bold shadow-[0_0_15px_rgba(0,229,255,0.25)]'
+                : 'text-gray-400 border-[#2B2B2B] hover:text-white hover:border-[#D4AF37]'
+            }`}
+          >
+            [ SOVEREIGN_AI_&_SPATIAL ]
+          </button>
+        </div>
+
         {/* BENTO GRID PORTFOLIO */}
         <main className="grid grid-cols-1 md:grid-cols-3 gap-6">
           
@@ -258,16 +303,18 @@ export default function VectisOnePortfolio() {
                 
                 {/* Sovereign Terminology Switcher Tabs */}
                 <div className="flex flex-wrap gap-1.5 bg-[#111111] p-1 rounded border border-[#2B2B2B] font-mono text-[10px] tracking-tight">
-                  <button 
-                    onClick={() => setActiveTab('cinema')}
-                    className={`px-2.5 py-1 rounded transition-all duration-200 cursor-pointer ${
-                      activeTab === 'cinema' 
-                        ? 'bg-[#00E5FF] text-black font-bold' 
-                        : 'text-gray-400 hover:text-white'
-                    }`}
-                  >
-                    [01_PROGRAMMATIC_CINEMA]
-                  </button>
+                  {filterMode !== 'hospitality' && (
+                    <button 
+                      onClick={() => setActiveTab('cinema')}
+                      className={`px-2.5 py-1 rounded transition-all duration-200 cursor-pointer ${
+                        activeTab === 'cinema' 
+                          ? 'bg-[#00E5FF] text-black font-bold' 
+                          : 'text-gray-400 hover:text-white'
+                      }`}
+                    >
+                      [01_PROGRAMMATIC_CINEMA]
+                    </button>
+                  )}
                   <button 
                     onClick={() => setActiveTab('hospitality')}
                     className={`px-2.5 py-1 rounded transition-all duration-200 cursor-pointer ${
@@ -278,16 +325,18 @@ export default function VectisOnePortfolio() {
                   >
                     [02_HOSPITALITY_ENGINE]
                   </button>
-                  <button 
-                    onClick={() => setActiveTab('spatial')}
-                    className={`px-2.5 py-1 rounded transition-all duration-200 cursor-pointer ${
-                      activeTab === 'spatial' 
-                        ? 'bg-[#00E5FF] text-black font-bold' 
-                        : 'text-gray-400 hover:text-white'
-                    }`}
-                  >
-                    [03_SPATIAL_UI_TRACKING]
-                  </button>
+                  {filterMode !== 'hospitality' && (
+                    <button 
+                      onClick={() => setActiveTab('spatial')}
+                      className={`px-2.5 py-1 rounded transition-all duration-200 cursor-pointer ${
+                        activeTab === 'spatial' 
+                          ? 'bg-[#00E5FF] text-black font-bold' 
+                          : 'text-gray-400 hover:text-white'
+                      }`}
+                    >
+                      [03_SPATIAL_UI_TRACKING]
+                    </button>
+                  )}
                 </div>
               </div>
 
@@ -395,124 +444,133 @@ export default function VectisOnePortfolio() {
             </div>
           </div>
 
-          {/* 2. B2B HOSPITALITY ENGINE (Vertical Card) */}
-          <div className="md:col-span-1 bg-[#1B1B1B]/90 border border-[#2B2B2B] rounded-lg p-6 flex flex-col justify-between hover:border-[#D4AF37] transition-all duration-300 shadow-xl group">
-            <div>
-              <h2 className="text-[#00E5FF] font-mono text-xs tracking-wider mb-4 flex items-center gap-2">
-                <Monitor className="h-4 w-4" />
-                02. AI HOSPITALITY ASSETS
-              </h2>
-              
-              <div className="grid grid-cols-2 gap-4 mb-4">
-                {/* Harbour House image */}
-                <div 
-                  onClick={() => openLightbox('/assets/harbour_house.png')}
-                  className="relative group/img overflow-hidden rounded border border-[#333] cursor-pointer hover:border-[#D4AF37] transition-all duration-300"
-                >
-                  <img 
-                    src="/assets/harbour_house.png" 
-                    alt="Harbour House Promo" 
-                    className="w-full h-auto object-cover aspect-[3/4] group-hover/img:scale-105 transition-transform duration-500" 
-                  />
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 flex items-center justify-center transition-opacity duration-300">
-                    <Eye className="h-6 w-6 text-[#00E5FF]" />
+          {/* 2. B2B HOSPITALITY ENGINE (Horizontal Scroll Card) */}
+          {(filterMode === 'all' || filterMode === 'hospitality') && (
+            <div className={`bg-[#1B1B1B]/90 border border-[#2B2B2B] rounded-lg p-6 flex flex-col justify-between hover:border-[#D4AF37] transition-all duration-300 shadow-xl group ${
+              filterMode === 'hospitality' ? 'md:col-span-1' : 'md:col-span-1'
+            }`}>
+              <div>
+                <h2 className="text-[#00E5FF] font-mono text-xs tracking-wider mb-4 flex items-center gap-2">
+                  <Monitor className="h-4 w-4" />
+                  02. AI HOSPITALITY ASSETS
+                </h2>
+                
+                {/* Horizontal Scroll Area (Scroll Section) */}
+                <div className="flex gap-4 overflow-x-auto pb-4 pt-1 snap-x scrollbar-thin scrollbar-track-transparent scrollbar-thumb-[#D4AF37] scroll-smooth">
+                  {/* Harbour House image */}
+                  <div 
+                    onClick={() => openLightbox('/assets/harbour_house.png')}
+                    className="relative group/img overflow-hidden rounded border border-[#333] cursor-pointer hover:border-[#D4AF37] transition-all duration-300 w-44 h-56 shrink-0 snap-start"
+                  >
+                    <img 
+                      src="/assets/harbour_house.png" 
+                      alt="Harbour House Promo" 
+                      className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" 
+                    />
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 flex items-center justify-center transition-opacity duration-300">
+                      <Eye className="h-6 w-6 text-[#00E5FF]" />
+                    </div>
+                    <span className="absolute bottom-2 left-2 font-mono text-[9px] bg-black/75 px-1.5 py-0.5 rounded text-[#D4AF37] border border-[#222]">
+                      [HARBOUR_HOUSE]
+                    </span>
                   </div>
-                  <span className="absolute bottom-2 left-2 font-mono text-[9px] bg-black/75 px-1.5 py-0.5 rounded text-[#D4AF37] border border-[#222]">
-                    [HARBOUR_HOUSE]
-                  </span>
-                </div>
 
-                {/* The Crown image */}
-                <div 
-                  onClick={() => openLightbox('/assets/the_crown.png')}
-                  className="relative group/img overflow-hidden rounded border border-[#333] cursor-pointer hover:border-[#D4AF37] transition-all duration-300"
-                >
-                  <img 
-                    src="/assets/the_crown.png" 
-                    alt="The Crown Promo" 
-                    className="w-full h-auto object-cover aspect-[3/4] group-hover/img:scale-105 transition-transform duration-500" 
-                  />
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 flex items-center justify-center transition-opacity duration-300">
-                    <Eye className="h-6 w-6 text-[#00E5FF]" />
+                  {/* The Crown image */}
+                  <div 
+                    onClick={() => openLightbox('/assets/the_crown.png')}
+                    className="relative group/img overflow-hidden rounded border border-[#333] cursor-pointer hover:border-[#D4AF37] transition-all duration-300 w-44 h-56 shrink-0 snap-start"
+                  >
+                    <img 
+                      src="/assets/the_crown.png" 
+                      alt="The Crown Promo" 
+                      className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" 
+                    />
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 flex items-center justify-center transition-opacity duration-300">
+                      <Eye className="h-6 w-6 text-[#00E5FF]" />
+                    </div>
+                    <span className="absolute bottom-2 left-2 font-mono text-[9px] bg-black/75 px-1.5 py-0.5 rounded text-[#D4AF37] border border-[#222]">
+                      [THE_CROWN]
+                    </span>
                   </div>
-                  <span className="absolute bottom-2 left-2 font-mono text-[9px] bg-black/75 px-1.5 py-0.5 rounded text-[#D4AF37] border border-[#222]">
-                    [THE_CROWN]
-                  </span>
+
+                  {/* Black Pepper Corns Banner */}
+                  <div 
+                    onClick={() => openLightbox('/assets/banner.png')}
+                    className="relative group/img overflow-hidden rounded border border-[#333] cursor-pointer hover:border-[#D4AF37] transition-all duration-300 w-64 h-56 shrink-0 snap-start"
+                  >
+                    <img 
+                      src="/assets/banner.png" 
+                      alt="Black Pepper Corns Banner" 
+                      className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" 
+                    />
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 flex items-center justify-center transition-opacity duration-300">
+                      <Eye className="h-6 w-6 text-[#00E5FF]" />
+                    </div>
+                    <span className="absolute bottom-2 left-2 font-mono text-[9px] bg-black/75 px-1.5 py-0.5 rounded text-[#D4AF37] border border-[#222]">
+                      [BLACK_PEPPER_CORNS]
+                    </span>
+                  </div>
                 </div>
               </div>
 
-              {/* Black Pepper Corns Banner */}
-              <div 
-                onClick={() => openLightbox('/assets/banner.png')}
-                className="relative group/img overflow-hidden rounded border border-[#333] cursor-pointer hover:border-[#D4AF37] transition-all duration-300"
-              >
-                <img 
-                  src="/assets/banner.png" 
-                  alt="Black Pepper Corns Banner" 
-                  className="w-full h-auto object-cover aspect-[1.2] group-hover/img:scale-105 transition-transform duration-500" 
-                />
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 flex items-center justify-center transition-opacity duration-300">
-                  <Eye className="h-6 w-6 text-[#00E5FF]" />
-                </div>
-                <span className="absolute bottom-2 left-2 font-mono text-[9px] bg-black/75 px-1.5 py-0.5 rounded text-[#D4AF37] border border-[#222]">
-                  [BLACK_PEPPER_CORNS]
-                </span>
-              </div>
+              <p className="text-sm opacity-85 mt-4 leading-relaxed text-[#F5F2EB]">
+                Hyper-realistic food rendering and typography engines designed for high-conversion local restaurant marketing (Print & Social Media).
+              </p>
             </div>
-
-            <p className="text-sm opacity-85 mt-5 leading-relaxed text-[#F5F2EB]">
-              Hyper-realistic food rendering and typography engines designed for high-conversion local restaurant marketing (Print & Social Media).
-            </p>
-          </div>
+          )}
 
           {/* 3. ENTERPRISE AI (VIS SYSTEM) */}
-          <div className="md:col-span-1 bg-[#1B1B1B]/90 border border-[#2B2B2B] rounded-lg p-6 hover:border-[#D4AF37] transition-all duration-300 shadow-xl flex flex-col justify-between group">
-            <div>
-              <h2 className="text-[#00E5FF] font-mono text-xs tracking-wider mb-4 flex items-center gap-2">
-                <Cpu className="h-4 w-4" />
-                03. ENTERPRISE COMPUTER VISION
-              </h2>
-              
-              <div 
-                onClick={() => openLightbox('/assets/amazon_glove_test.png')}
-                className="relative group/img overflow-hidden rounded mb-4 border border-[#333] cursor-pointer hover:border-[#00E5FF] transition-all duration-300"
-              >
-                <img 
-                  src="/assets/amazon_glove_test.png" 
-                  alt="Amazon Glove Test" 
-                  className="w-full h-40 object-cover group-hover/img:scale-105 transition-transform duration-500" 
-                />
-                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover/img:opacity-100 flex items-center justify-center transition-opacity duration-300">
-                  <span className="bg-black/80 border border-[#00E5FF] text-[#00E5FF] font-mono text-xs px-3 py-1.5 rounded flex items-center gap-1.5">
-                    <Eye className="h-4 w-4" /> INSPECT DASHBOARD
-                  </span>
-                </div>
-                <div className="absolute top-2 right-2 flex items-center gap-2 font-mono text-[8px] bg-[#111111]/90 border border-[#2B2B2B] px-2 py-0.5 rounded">
-                  <div className="flex items-center gap-1 text-[#00E5FF]">
-                    <span className="h-1.5 w-1.5 rounded-full bg-red-500 animate-ping"></span>
-                    LIVE FEED
+          {(filterMode === 'all' || filterMode === 'enterprise') && (
+            <div className="md:col-span-1 bg-[#1B1B1B]/90 border border-[#2B2B2B] rounded-lg p-6 hover:border-[#D4AF37] transition-all duration-300 shadow-xl flex flex-col justify-between group">
+              <div>
+                <h2 className="text-[#00E5FF] font-mono text-xs tracking-wider mb-4 flex items-center gap-2">
+                  <Cpu className="h-4 w-4" />
+                  03. ENTERPRISE COMPUTER VISION
+                </h2>
+                
+                <div 
+                  onClick={() => openLightbox('/assets/amazon_glove_test.png')}
+                  className="relative group/img overflow-hidden rounded mb-4 border border-[#333] cursor-pointer hover:border-[#00E5FF] transition-all duration-300"
+                >
+                  <img 
+                    src="/assets/amazon_glove_test.png" 
+                    alt="Amazon Glove Test" 
+                    className="w-full h-40 object-cover group-hover/img:scale-105 transition-transform duration-500" 
+                  />
+                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover/img:opacity-100 flex items-center justify-center transition-opacity duration-300">
+                    <span className="bg-black/80 border border-[#00E5FF] text-[#00E5FF] font-mono text-xs px-3 py-1.5 rounded flex items-center gap-1.5">
+                      <Eye className="h-4 w-4" /> INSPECT DASHBOARD
+                    </span>
                   </div>
-                  <span className="text-gray-600">|</span>
-                  <span className="text-[#D4AF37] font-bold">
-                    [INNOVATE_UK_PARTNERSHIP]
-                  </span>
+                  <div className="absolute top-2 right-2 flex items-center gap-2 font-mono text-[8px] bg-[#111111]/90 border border-[#2B2B2B] px-2 py-0.5 rounded">
+                    <div className="flex items-center gap-1 text-[#00E5FF]">
+                      <span className="h-1.5 w-1.5 rounded-full bg-red-500 animate-ping"></span>
+                      LIVE FEED
+                    </div>
+                    <span className="text-gray-600">|</span>
+                    <span className="text-[#D4AF37] font-bold">
+                      [INNOVATE_UK_PARTNERSHIP]
+                    </span>
+                  </div>
                 </div>
-              </div>
 
-              <h3 className="font-serif text-xl mb-2 text-[#D4AF37]">VIS: Safety Node</h3>
+                <h3 className="font-serif text-xl mb-2 text-[#D4AF37]">VIS: Safety Node</h3>
+              </div>
+              
+              <p className="text-sm opacity-85 leading-relaxed text-[#F5F2EB]">
+                A 4-bit quantized local AI vision model designed to detect false-compliance PPE on construction sites with 0.6s latency. Deployed in partnership with VIS for the Innovate UK grant application and HSWA 1974 compliance.
+              </p>
             </div>
-            
-            <p className="text-sm opacity-85 leading-relaxed text-[#F5F2EB]">
-              A 4-bit quantized local AI vision model designed to detect false-compliance PPE on construction sites with 0.6s latency. Deployed in partnership with VIS for the Innovate UK grant application and HSWA 1974 compliance.
-            </p>
-          </div>
+          )}
 
           {/* 4. THE TECH STACK / CAPABILITIES */}
-          <div className="md:col-span-1 bg-gradient-to-br from-[#1B1B1B] to-[#111111] border border-[#2B2B2B] rounded-lg p-6 flex flex-col justify-between hover:border-[#D4AF37] transition-all duration-300 shadow-xl group">
+          <div className={`bg-gradient-to-br from-[#1B1B1B] to-[#111111] border border-[#2B2B2B] rounded-lg p-6 flex flex-col justify-between hover:border-[#D4AF37] transition-all duration-300 shadow-xl group ${
+            filterMode === 'hospitality' ? 'md:col-span-3' : 'md:col-span-1'
+          }`}>
             <div>
               <h2 className="text-[#00E5FF] font-mono text-xs tracking-wider mb-6">04. DEPLOYABLE CAPABILITIES</h2>
               
-              <div className="flex flex-col gap-3 font-mono text-[11px]">
+              <div className={`grid gap-3 font-mono text-[11px] ${filterMode === 'hospitality' ? 'grid-cols-2' : 'grid-cols-1'}`}>
                 <div className="p-3 border border-[#2B2B2B] rounded bg-black/45 hover:border-[#D4AF37] transition-colors duration-200">
                   <span className="text-[#D4AF37] mr-1.5">&gt;&gt;</span> Local LLM & Edge-AI Deployment
                 </div>
@@ -534,56 +592,60 @@ export default function VectisOnePortfolio() {
           </div>
 
           {/* 5. EXPANDED SHOWCASES (Hardware/Holographic Blueprints) */}
-          <div className="md:col-span-1 bg-[#1B1B1B]/90 border border-[#2B2B2B] rounded-lg p-6 hover:border-[#D4AF37] transition-all duration-300 shadow-xl flex flex-col justify-between group">
-            <div>
-              <h2 className="text-[#00E5FF] font-mono text-xs tracking-wider mb-4 flex items-center gap-2">
-                <Cpu className="h-4 w-4" />
-                05. SPATIAL & HARDWARE SYSTEMS
-              </h2>
-              
-              <div className="grid grid-cols-2 gap-4">
-                {/* Edge Device Card */}
-                <div 
-                  onClick={() => openLightbox('/assets/edge_device.png')}
-                  className="relative group/img overflow-hidden rounded border border-[#333] cursor-pointer hover:border-[#00E5FF] transition-all duration-300"
-                >
-                  <img 
-                    src="/assets/edge_device.png" 
-                    alt="Edge GPU Hardware" 
-                    className="w-full h-auto object-cover aspect-square group-hover/img:scale-105 transition-transform duration-500" 
-                  />
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 flex items-center justify-center transition-opacity duration-300">
-                    <Eye className="h-5 w-5 text-[#00E5FF]" />
+          {(filterMode === 'all' || filterMode === 'enterprise') && (
+            <div className={`bg-[#1B1B1B]/90 border border-[#2B2B2B] rounded-lg p-6 hover:border-[#D4AF37] transition-all duration-300 shadow-xl flex flex-col justify-between group ${
+              filterMode === 'enterprise' ? 'md:col-span-2' : 'md:col-span-1'
+            }`}>
+              <div>
+                <h2 className="text-[#00E5FF] font-mono text-xs tracking-wider mb-4 flex items-center gap-2">
+                  <Cpu className="h-4 w-4" />
+                  05. SPATIAL & HARDWARE SYSTEMS
+                </h2>
+                
+                <div className="grid grid-cols-2 gap-4">
+                  {/* Edge Device Card */}
+                  <div 
+                    onClick={() => openLightbox('/assets/edge_device.png')}
+                    className="relative group/img overflow-hidden rounded border border-[#333] cursor-pointer hover:border-[#00E5FF] transition-all duration-300"
+                  >
+                    <img 
+                      src="/assets/edge_device.png" 
+                      alt="Edge GPU Hardware" 
+                      className="w-full h-auto object-cover aspect-square group-hover/img:scale-105 transition-transform duration-500" 
+                    />
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 flex items-center justify-center transition-opacity duration-300">
+                      <Eye className="h-5 w-5 text-[#00E5FF]" />
+                    </div>
+                    <span className="absolute bottom-1 right-1 font-mono text-[8px] bg-black/85 px-1 rounded text-[#00E5FF]">
+                      [SOVEREIGN_NODE]
+                    </span>
                   </div>
-                  <span className="absolute bottom-1 right-1 font-mono text-[8px] bg-black/85 px-1 rounded text-[#00E5FF]">
-                    [SOVEREIGN_NODE]
-                  </span>
-                </div>
 
-                {/* Holographic Presence Card */}
-                <div 
-                  onClick={() => openLightbox('/assets/holographic_presence.png')}
-                  className="relative group/img overflow-hidden rounded border border-[#333] cursor-pointer hover:border-[#D4AF37] transition-all duration-300"
-                >
-                  <img 
-                    src="/assets/holographic_presence.png" 
-                    alt="Spatial Projection Blueprint" 
-                    className="w-full h-auto object-cover aspect-square group-hover/img:scale-105 transition-transform duration-500" 
-                  />
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 flex items-center justify-center transition-opacity duration-300">
-                    <Eye className="h-5 w-5 text-[#D4AF37]" />
+                  {/* Holographic Presence Card */}
+                  <div 
+                    onClick={() => openLightbox('/assets/holographic_presence.png')}
+                    className="relative group/img overflow-hidden rounded border border-[#333] cursor-pointer hover:border-[#D4AF37] transition-all duration-300"
+                  >
+                    <img 
+                      src="/assets/holographic_presence.png" 
+                      alt="Spatial Projection Blueprint" 
+                      className="w-full h-auto object-cover aspect-square group-hover/img:scale-105 transition-transform duration-500" 
+                    />
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 flex items-center justify-center transition-opacity duration-300">
+                      <Eye className="h-5 w-5 text-[#D4AF37]" />
+                    </div>
+                    <span className="absolute bottom-1 right-1 font-mono text-[8px] bg-black/85 px-1 rounded text-[#D4AF37]">
+                      [OPTICAL_ARRAY]
+                    </span>
                   </div>
-                  <span className="absolute bottom-1 right-1 font-mono text-[8px] bg-black/85 px-1 rounded text-[#D4AF37]">
-                    [OPTICAL_ARRAY]
-                  </span>
                 </div>
               </div>
-            </div>
 
-            <p className="text-sm opacity-85 mt-5 leading-relaxed text-[#F5F2EB]">
-              Physical hardware design and optical holography. Custom Liquid-Cooled AI enclosures and 3D projection array nodes deployed locally.
-            </p>
-          </div>
+              <p className="text-sm opacity-85 mt-5 leading-relaxed text-[#F5F2EB]">
+                Physical hardware design and optical holography. Custom Liquid-Cooled AI enclosures and 3D projection array nodes deployed locally.
+              </p>
+            </div>
+          )}
 
         </main>
 
