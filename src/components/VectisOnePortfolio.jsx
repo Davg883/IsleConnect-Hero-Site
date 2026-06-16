@@ -52,6 +52,14 @@ export default function VectisOnePortfolio() {
       desc: 'Automated promotional content engine producing pixel-perfect brand loops. Scaled dynamic asset generation for Fumo 33 and regional high-conversion marketing.',
       tech: 'React Automation / NodeJS / YouTube Stream'
     },
+    pepper_corns: {
+      type: 'youtube',
+      src: 'https://www.youtube.com/embed/Np1NoDXmJz4?autoplay=1&mute=1&loop=1&playlist=Np1NoDXmJz4',
+      title: '02_BLACK_PEPPER_CORNS',
+      subtitle: 'Indian & Sri Lankan Brand Loop',
+      desc: 'Automated social media asset generation and brand loops for Black Pepper Corns, showcasing high-conversion food photography and typography templates.',
+      tech: 'React Automation / NodeJS / YouTube Stream'
+    },
     spatial: {
       type: 'local',
       src: '/assets/screen_record_hunt.mp4',
@@ -325,6 +333,18 @@ export default function VectisOnePortfolio() {
                   >
                     [02_HOSPITALITY_ENGINE]
                   </button>
+                  {filterMode !== 'enterprise' && (
+                    <button 
+                      onClick={() => setActiveTab('pepper_corns')}
+                      className={`px-2.5 py-1 rounded transition-all duration-200 cursor-pointer ${
+                        activeTab === 'pepper_corns' 
+                          ? 'bg-[#D4AF37] text-black font-bold' 
+                          : 'text-gray-400 hover:text-white'
+                      }`}
+                    >
+                      [02_BLACK_PEPPER_CORNS]
+                    </button>
+                  )}
                   {filterMode !== 'hospitality' && (
                     <button 
                       onClick={() => setActiveTab('spatial')}
