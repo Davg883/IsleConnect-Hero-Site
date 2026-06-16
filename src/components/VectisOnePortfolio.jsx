@@ -72,6 +72,11 @@ export default function VectisOnePortfolio() {
       desc: 'Local hospitality typography and aesthetic layout automation engine for regional dining campaigns.'
     },
     {
+      url: '/assets/banner.png',
+      title: 'Black Pepper Corns Flyer',
+      desc: 'Indian & Sri Lankan brand assets and marketing layout engine designed for local restaurant promotions.'
+    },
+    {
       url: '/assets/amazon_glove_test.png',
       title: 'VIS Dashboard: Safety Node (Innovate UK Grant)',
       desc: 'A 4-bit quantized local AI vision model designed to detect false-compliance PPE on construction sites (Amazon Glove Test). Built in partnership with VIS for the Innovate UK grant application and HSWA 1974 compliance.'
@@ -398,7 +403,7 @@ export default function VectisOnePortfolio() {
                 02. AI HOSPITALITY ASSETS
               </h2>
               
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-4 mb-4">
                 {/* Harbour House image */}
                 <div 
                   onClick={() => openLightbox('/assets/harbour_house.png')}
@@ -434,6 +439,24 @@ export default function VectisOnePortfolio() {
                     [THE_CROWN]
                   </span>
                 </div>
+              </div>
+
+              {/* Black Pepper Corns Banner */}
+              <div 
+                onClick={() => openLightbox('/assets/banner.png')}
+                className="relative group/img overflow-hidden rounded border border-[#333] cursor-pointer hover:border-[#D4AF37] transition-all duration-300"
+              >
+                <img 
+                  src="/assets/banner.png" 
+                  alt="Black Pepper Corns Banner" 
+                  className="w-full h-auto object-cover aspect-[1.2] group-hover/img:scale-105 transition-transform duration-500" 
+                />
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 flex items-center justify-center transition-opacity duration-300">
+                  <Eye className="h-6 w-6 text-[#00E5FF]" />
+                </div>
+                <span className="absolute bottom-2 left-2 font-mono text-[9px] bg-black/75 px-1.5 py-0.5 rounded text-[#D4AF37] border border-[#222]">
+                  [BLACK_PEPPER_CORNS]
+                </span>
               </div>
             </div>
 
