@@ -480,7 +480,7 @@ export default function VectisOnePortfolio() {
                   {/* Harbour House image */}
                   <div 
                     onClick={() => openLightbox('/assets/harbour_house.png')}
-                    className="relative group/img overflow-hidden rounded border border-[#333] cursor-pointer hover:border-[#D4AF37] transition-all duration-300 w-44 h-56 shrink-0 snap-start"
+                    className="relative group/img overflow-hidden rounded border border-[#333] cursor-pointer hover:border-[#D4AF37] transition-all duration-300 w-48 h-48 shrink-0 snap-start"
                   >
                     <img 
                       src="/assets/harbour_house.png" 
@@ -498,7 +498,7 @@ export default function VectisOnePortfolio() {
                   {/* The Crown image */}
                   <div 
                     onClick={() => openLightbox('/assets/the_crown.png')}
-                    className="relative group/img overflow-hidden rounded border border-[#333] cursor-pointer hover:border-[#D4AF37] transition-all duration-300 w-44 h-56 shrink-0 snap-start"
+                    className="relative group/img overflow-hidden rounded border border-[#333] cursor-pointer hover:border-[#D4AF37] transition-all duration-300 w-48 h-48 shrink-0 snap-start"
                   >
                     <img 
                       src="/assets/the_crown.png" 
@@ -516,7 +516,7 @@ export default function VectisOnePortfolio() {
                   {/* Black Pepper Corns Banner */}
                   <div 
                     onClick={() => openLightbox('/assets/banner.png')}
-                    className="relative group/img overflow-hidden rounded border border-[#333] cursor-pointer hover:border-[#D4AF37] transition-all duration-300 w-64 h-56 shrink-0 snap-start"
+                    className="relative group/img overflow-hidden rounded border border-[#333] cursor-pointer hover:border-[#D4AF37] transition-all duration-300 w-48 h-48 shrink-0 snap-start"
                   >
                     <img 
                       src="/assets/banner.png" 
