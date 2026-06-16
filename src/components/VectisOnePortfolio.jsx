@@ -75,17 +75,22 @@ export default function VectisOnePortfolio() {
     {
       url: '/assets/harbour_house.png',
       title: 'Harbour House Promotion',
-      desc: 'Hyper-realistic food rendering and typography engines designed for high-conversion local restaurant marketing (Print & Social Media).'
+      desc: 'Local hospitality typography and aesthetic layout automation engine for regional dining campaigns.'
     },
     {
       url: '/assets/the_crown.png',
-      title: 'The Crown Promotion',
-      desc: 'Local hospitality typography and aesthetic layout automation engine for regional dining campaigns.'
+      title: 'The Crown Hotel Promotion',
+      desc: 'Hyper-realistic food rendering and typography engines designed for high-conversion local restaurant marketing (Print & Social Media).'
     },
     {
       url: '/assets/banner.png',
       title: 'Black Pepper Corns Flyer',
       desc: 'Indian & Sri Lankan brand assets and marketing layout engine designed for local restaurant promotions.'
+    },
+    {
+      url: '/assets/clothing_brand.png',
+      title: 'Local Clothing Brand Mockup',
+      desc: 'Mockup design for local clothing brand Avarri, demonstrating apparel branding and modern lifestyle presentation.'
     },
     {
       url: '/assets/amazon_glove_test.png',
@@ -530,11 +535,29 @@ export default function VectisOnePortfolio() {
                       [BLACK_PEPPER_CORNS]
                     </span>
                   </div>
+
+                  {/* Clothing Brand Mockup */}
+                  <div 
+                    onClick={() => openLightbox('/assets/clothing_brand.png')}
+                    className="relative group/img overflow-hidden rounded border border-[#333] cursor-pointer hover:border-[#D4AF37] transition-all duration-300 w-48 h-48 shrink-0 snap-start"
+                  >
+                    <img 
+                      src="/assets/clothing_brand.png" 
+                      alt="Clothing Brand Mockup" 
+                      className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500" 
+                    />
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 flex items-center justify-center transition-opacity duration-300">
+                      <Eye className="h-6 w-6 text-[#00E5FF]" />
+                    </div>
+                    <span className="absolute bottom-2 left-2 font-mono text-[9px] bg-black/75 px-1.5 py-0.5 rounded text-[#D4AF37] border border-[#222]">
+                      [AVARRI_CLOTHING]
+                    </span>
+                  </div>
                 </div>
               </div>
 
               <p className="text-sm opacity-85 mt-4 leading-relaxed text-[#F5F2EB]">
-                Hyper-realistic food rendering and typography engines designed for high-conversion local restaurant marketing (Print & Social Media).
+                Hyper-realistic food rendering, brand apparel mockups, and typography engines designed for high-conversion regional restaurant and local business marketing (Print & Social Media).
               </p>
             </div>
           )}
