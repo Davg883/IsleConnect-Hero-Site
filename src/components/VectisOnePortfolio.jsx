@@ -72,9 +72,9 @@ export default function VectisOnePortfolio() {
       desc: 'Local hospitality typography and aesthetic layout automation engine for regional dining campaigns.'
     },
     {
-      url: '/assets/vis_dashboard.png',
-      title: 'VIS Dashboard: Safety Node',
-      desc: 'A 4-bit quantized local AI vision model designed to detect false-compliance PPE on construction sites with 0.6s latency. Built for HSWA 1974 compliance.'
+      url: '/assets/amazon_glove_test.png',
+      title: 'VIS Dashboard: Safety Node (Innovate UK Grant)',
+      desc: 'A 4-bit quantized local AI vision model designed to detect false-compliance PPE on construction sites (Amazon Glove Test). Built in partnership with VIS for the Innovate UK grant application and HSWA 1974 compliance.'
     },
     {
       url: '/assets/edge_device.png',
@@ -451,12 +451,12 @@ export default function VectisOnePortfolio() {
               </h2>
               
               <div 
-                onClick={() => openLightbox('/assets/vis_dashboard.png')}
+                onClick={() => openLightbox('/assets/amazon_glove_test.png')}
                 className="relative group/img overflow-hidden rounded mb-4 border border-[#333] cursor-pointer hover:border-[#00E5FF] transition-all duration-300"
               >
                 <img 
-                  src="/assets/vis_dashboard.png" 
-                  alt="VIS Dashboard" 
+                  src="/assets/amazon_glove_test.png" 
+                  alt="Amazon Glove Test" 
                   className="w-full h-40 object-cover group-hover/img:scale-105 transition-transform duration-500" 
                 />
                 <div className="absolute inset-0 bg-black/50 opacity-0 group-hover/img:opacity-100 flex items-center justify-center transition-opacity duration-300">
@@ -464,9 +464,15 @@ export default function VectisOnePortfolio() {
                     <Eye className="h-4 w-4" /> INSPECT DASHBOARD
                   </span>
                 </div>
-                <div className="absolute top-2 right-2 flex items-center gap-1.5 font-mono text-[8px] bg-[#111111]/85 border border-[#2B2B2B] px-2 py-0.5 rounded text-[#00E5FF]">
-                  <span className="h-1.5 w-1.5 rounded-full bg-red-500 animate-ping"></span>
-                  LIVE FEED
+                <div className="absolute top-2 right-2 flex items-center gap-2 font-mono text-[8px] bg-[#111111]/90 border border-[#2B2B2B] px-2 py-0.5 rounded">
+                  <div className="flex items-center gap-1 text-[#00E5FF]">
+                    <span className="h-1.5 w-1.5 rounded-full bg-red-500 animate-ping"></span>
+                    LIVE FEED
+                  </div>
+                  <span className="text-gray-600">|</span>
+                  <span className="text-[#D4AF37] font-bold">
+                    [INNOVATE_UK_PARTNERSHIP]
+                  </span>
                 </div>
               </div>
 
@@ -474,7 +480,7 @@ export default function VectisOnePortfolio() {
             </div>
             
             <p className="text-sm opacity-85 leading-relaxed text-[#F5F2EB]">
-              A 4-bit quantized local AI vision model designed to detect false-compliance PPE on construction sites with 0.6s latency. Deployed offline for HSWA 1974 compliance.
+              A 4-bit quantized local AI vision model designed to detect false-compliance PPE on construction sites with 0.6s latency. Deployed in partnership with VIS for the Innovate UK grant application and HSWA 1974 compliance.
             </p>
           </div>
 
